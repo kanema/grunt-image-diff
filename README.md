@@ -58,8 +58,7 @@ grunt.initConfig({
   image_diff: {
 	options: {
 	  orig: '_orig',
-	  diff: '_diff',
-	  path: './screenshots/',
+	  diff: '_diff'
 	},
 	src: './screenshots/*.png'
   },
