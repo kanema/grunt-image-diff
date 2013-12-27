@@ -49,12 +49,6 @@ Default value: `'_diff'`
 
 A string value difference file pattern.
 
-#### options.path
-Type: `String`
-Default value: `'_diff'`
-
-A string value difference file pattern.
-
 ### Usage Examples
 
 #### Default Options
