@@ -1,0 +1,33 @@
+{
+  "name": "grunt-image-diff",
+  "description": "Grunt implementation of Perceptual Image Diff",
+  "version": "0.1.0",
+  "homepage": "https://github.com/kanema/grunt-image-diff",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kanema/grunt-image-diff.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kanema/grunt-image-diff/issues"
+  },
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "shelljs": "~0.2.6"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "gruntplugin",
+    "image",
+    "image diff",
+    "perceptual image diff"
+  ]
+}
