@@ -43,11 +43,29 @@ Default value: `'_orig'`
 
 A string value original file pattern.
 
+#### options.test
+Type: `String`
+Default value: `'_test'`
+
+A string value test of difference file pattern.
+
 #### options.diff
 Type: `String`
 Default value: `'_diff'`
 
-A string value difference file pattern.
+A string value difference file pattern to write difference to the file.
+
+#### options.luminanceonly
+Type: `Bool`
+Default value: `true`
+
+To only consider luminance; ignore chroma (color) in the comparation.
+
+#### options.colorfactor
+Type: `String`
+Default value: `'0.0'`
+
+How much of color to use, 0.0 to 1.0, 0.0 = ignore color.
 
 ### Usage Examples
 
@@ -58,11 +76,13 @@ grunt.initConfig({
   image_diff: {
 	options: {
 	  orig: '_orig',
-	  diff: '_diff'
+	  test: '_test',
+	  diff: '_diff',
 	},
 	src: './screenshots/*.png'
   },
 });
 ```
 ## Release History
-_(Nothing yet)_
+0.1.1 - Change options. Include luminanceonly and colorfactor.
+0.1.0 - First version.

@@ -23,25 +23,35 @@ module.exports = function(grunt) {
 
     var options = this.options({
       orig: '_orig',
-      diff: '_diff'
+      test: '_test',
+      diff: '_diff',
+      colorfactor: '0.0',
+      luminanceonly: true,
     });
 
     var tests = 0;
 
     this.files.forEach(function (f) {
       f.src.forEach(function(orig) {
+        var test = orig.replace(options.orig, options.test);
         var diff = orig.replace(options.orig, options.diff);
         if (orig === diff) {
           return;
         }
-        if (!grunt.file.exists(diff)) {
-          grunt.log.warn('Diff file "' + diff + '" invalid.');
+        if (!grunt.file.exists(test)) {
+          grunt.log.warn('Test file "' + test + '" invalid.');
           return;
         }
         
         tests++;
 
-        var cmd = perceptualdiff + ' "' + orig + '" "' + diff + '" -verbose';
+        var cmd = perceptualdiff + ' "' + orig + '" "' + test + '" -verbose -output "' + diff + '" ';
+		if (options.luminanceonly) {
+			cmd += '-luminanceonly ';
+		}
+		if (options.colorfactor) {
+			cmd += '-colorfactor '+ options.colorfactor +' ';
+		}
         var result = shell.exec(cmd, {silent:true, async:false}).output;
         
         var success = false;
@@ -59,7 +69,7 @@ module.exports = function(grunt) {
         }
 
         if ( ! success) {
-          grunt.fail.warn(orig + ": " + msg);
+          grunt.fail.warn(orig + ': "' + msg + '" see diff file "' + diff + '"');
         }
       });
     });
